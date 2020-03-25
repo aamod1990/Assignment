@@ -1,0 +1,35 @@
+{
+  "name": "hcl-assignment",
+  "version": "0.0.1",
+  "description": "this is hcl assignment",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aamod2017/HCL-Assignment.git"
+  },
+  "keywords": [
+    "role",
+    "based",
+    "based",
+    "on",
+    "two",
+    "credential"
+  ],
+  "author": "Aamod Tiwari aamod1990@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aamod2017/HCL-Assignment/issues"
+  },
+  "homepage": "https://github.com/aamod2017/HCL-Assignment#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.6"
+  }
+}
