@@ -1,0 +1,34 @@
+﻿<h1>Hi {{currentUser.data.email}}!</h1>
+<p><a [routerLink]="['/login']">Logout</a></p>
+<p class="createexercise"><a [routerLink]="['/createexercise']">Create Exercise</a></p>
+<table class="table" *ngIf="exercises">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Email</th>
+      <th scope="col">Exercise Name</th>
+      <th scope="col">Exercise Count</th>
+      <th scope="col">Exercise Date</th>
+      <th scope="col">Edit</th>
+      <th scope="col">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let exercise of exercises;let i=index">
+      <th scope="row">{{i+1}} </th>
+      <td>{{exercise.email}}</td>
+      <td>{{exercise.exerciseName}}</td>
+      <td>{{exercise.exerciseCount}}</td>
+      <td>{{exercise.exerciseDate}}</td>
+      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+          (click)="editExercise(exercise)">
+          edit
+        </button></td>
+      <td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal"
+          (click)="deleteExercise(exercise._id)">
+          delete
+        </button></td>
+    </tr>
+  </tbody>
+</table>
+<h1 *ngIf="show"> No Details Found</h1>

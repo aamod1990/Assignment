@@ -1,12 +1,15 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const path = require('path')
 const db = require('./initializers/database.js');
 const middleware = require('./initializers/middleware.js');
 require("dotenv").config({
   path: path.join(__dirname, '/.env')
 });
+
 const app = express();
+app.use(cors());
 // MongoDB Connection
 db.connectMongoDB();
 // create application/json parser 

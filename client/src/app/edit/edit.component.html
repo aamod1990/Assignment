@@ -1,0 +1,36 @@
+<h2>Update Exercise</h2>
+<form [formGroup]="editExerciseForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="exerciseName">Exercise Name</label>
+    <input type="text" formControlName="exerciseName" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.exerciseName.errors }" #exerciseName
+      [(ngModel)]="editExercise.exerciseName" />
+    <div *ngIf="submitted && f.exerciseName.errors" class="invalid-feedback">
+      <div *ngIf="f.exerciseName.errors.required">Exercise name is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exerciseCount">Exercise Count</label>
+    <input type="text" formControlName="exerciseCount" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.exerciseCount.errors }" #exerciseCount
+      [(ngModel)]="editExercise.exerciseCount" />
+    <div *ngIf="submitted && f.exerciseCount.errors" class="invalid-feedback">
+      <div *ngIf="f.exerciseCount.errors.required">Exercise count is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="exerciseDate">Exercise Date</label>
+    <input type="date" formControlName="exerciseDate" class="form-control"
+      [ngClass]="{ 'is-invalid': submitted && f.exerciseDate.errors }" #exerciseDate
+      [(ngModel)]="editExercise.exerciseDate" />
+    <div *ngIf="submitted && f.exerciseDate.errors" class="invalid-feedback">
+      <div *ngIf="f.exerciseDate.errors.required">Exercise date is required</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">Update Exercise</button>
+    <img *ngIf="loading"
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <a [routerLink]="['/']" class="btn btn-link">Cancel</a>
+  </div>
+</form>
