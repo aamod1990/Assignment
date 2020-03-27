@@ -1,4 +1,4 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
@@ -11,7 +11,7 @@ import { AlertService, UserService } from '../_services';
 })
 export class EditExerciseComponent implements OnInit {
   updateExercise: Exercise;
-  editExercise:any={};
+  editExercise: any = {};
   editExerciseForm: FormGroup;
   loading = false;
   submitted = false;
@@ -21,11 +21,11 @@ export class EditExerciseComponent implements OnInit {
     private router: Router,
     private userService: UserService,
     private alertService: AlertService) {
-    this.updateExercise = JSON.parse(localStorage.getItem('updateExercise'));
-    this.editExercise = this.updateExercise
   }
 
   ngOnInit() {
+    // subscribe update data
+    this.userService.currentMessage.subscribe(message => this.editExercise = message)
     this.editExerciseForm = this.formBuilder.group({
       exerciseName: ['', Validators.required],
       exerciseCount: ['', Validators.required],
@@ -35,7 +35,7 @@ export class EditExerciseComponent implements OnInit {
 
   // convenience getter for easy access to form fields
   get f() { return this.editExerciseForm.controls; }
-
+  // submit update form
   onSubmit() {
     this.submitted = true;
 
@@ -45,7 +45,7 @@ export class EditExerciseComponent implements OnInit {
     }
 
     this.loading = true;
-    this.userService.updateExercise(this.editExerciseForm.value, this.updateExercise)
+    this.userService.updateExercise(this.editExerciseForm.value, this.editExercise)
       .pipe(first())
       .subscribe(
         data => {

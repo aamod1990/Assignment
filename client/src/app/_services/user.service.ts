@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { User } from '../_models';
 import { Exercise } from '../_models';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class UserService {
@@ -31,4 +32,11 @@ export class UserService {
     delete(id: string) {
         return this.http.delete(`${environment.apiUrl}/exercise/` + id);
     }
+    private messageSource = new BehaviorSubject([]);
+    currentMessage = this.messageSource.asObservable();
+
+    changeMessage(message: any) {
+      this.messageSource.next(message)
+    }
+
 }

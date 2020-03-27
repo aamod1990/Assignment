@@ -5,14 +5,14 @@ import { User } from '../_models';
 import { Exercise } from '../_models';
 import { AlertService, UserService } from '../_services';
 @Component({
-  selector:'home',
+  selector: 'home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.css']
 })
 export class HomeComponent implements OnInit {
   currentUser: User;
   show: Boolean;
-  updateData:any[]=[];
+  updateData: any[] = [];
   exercises: any[] = [];
 
   constructor(private userService: UserService, private router: Router, private alertService: AlertService) {
@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.loadAllUsers();
   }
-
+  // delete exercise
   deleteExercise(id: string) {
     const r = confirm(`Are you sure you want to delete ? Id =${id}`);
     if (r == true) {
@@ -34,12 +34,13 @@ export class HomeComponent implements OnInit {
       console.log("cancel");
     }
   }
+  // edit exercise
   editExercise(ex) {
     this.updateData = ex;
-    localStorage.setItem('updateExercise', JSON.stringify(ex));
+    this.userService.changeMessage(this.updateData)
     this.router.navigate(['/edit']);
   }
-
+  // load data
   private loadAllUsers() {
     this.userService.getAll().pipe(first()).subscribe((data: any) => {
       this.exercises = data.data;
