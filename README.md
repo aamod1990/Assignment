@@ -53,15 +53,6 @@ http://localhost:4200
 ~~~
 
 
-## TestCases
-
-~~~ sh
-# Run unit test cases 
-npm test
-# If you have linx machine then you can execute .sh file for unit test cases
-sh bin/run.sh
-~~~
-
 ## Problem Statement
 
 ~~~sh
